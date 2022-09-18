@@ -1,12 +1,16 @@
 package Factory;
 
-public abstract class Constructor {
-    public lavadora creaLavadora() {
-        lavadora lavadorad = creaLavadoraTipo();
-        lavadorad.ponerMandos();
-        lavadorad.ponerTambor();
-        return lavadorad;
-    }
+public class Constructor {
 
-    protected abstract lavadora creaLavadoraTipo();
+    public static lavadora LavadoraSeleccionada(String tipoLavadora){
+        switch (tipoLavadora){
+            case "frontal":
+                return new LavadorCargaFrontal();
+            case "superior":
+                return new LavadoraCargaSuperior();
+            default:
+                System.out.println("Lavadora no existente");
+                return null;
+        }
+    }
 }
